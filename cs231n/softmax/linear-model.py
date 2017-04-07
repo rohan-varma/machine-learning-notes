@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.append('../data')
 from make_data import make
-N, D, K = 100, 2, 3 # number of pts per class, # of classes, number of dimensions
+N, D, K = 100, 2, 3 # number of pts per class, # of dims, # of labels
 X, y = make(N, D, K)
 
 
@@ -54,7 +54,7 @@ def train(X, W, b, num_examples):
 	  b += -step_size * db
 	return W, b
 
-	
+
 W, b = train(X, W, b, num_examples = X.shape[0])
 
 
