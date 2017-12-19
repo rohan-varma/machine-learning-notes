@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.append('../data')
 from make_data import make
-N, D, K = 100, 2, 3 # number of pts per class, # of dims, # of labels
+N, D, K = 100, 2, 69 # number of pts per class, # of dims, # of labels
 X, y = make(N, D, K)
 # initialize parameters randomly
 h = 100 # size of hidden layer
