@@ -77,6 +77,7 @@ def make_softmax_graph(x_probs):
   softmax_one = lambda x, labels: -(labels.dot(np.log(x_probs)))
   softmax_two = lambda x, labels: -(labels.dot(np.log(x_probs)) + (1-labels).dot(np.log(1-x_probs)))
   first_way, second_way = [], []
+  print(len(x_probs))
   for idx, _ in enumerate(x_probs):
     # assign the correct label
     if idx == 0:
@@ -87,10 +88,10 @@ def make_softmax_graph(x_probs):
     second_way.append(softmax_two(x_probs, labels))
   # verify the losses are at least monotic dec
   # and softmax 2 loss is higher than softmax 1 loss? 
-  for idx, val in enumerate(zip(first_way, second_way)):
-    assert val[0] < val[1]
-    assert idx == 0 or first_way[idx] < first_way[idx-1]
-    assert idx == 0 or second_way[idx] < second_way[idx-1]
+  first_less_than_second = [val[0] < val[1] for val in zip(first_way, second_way)]
+  monotonic_dec = [idx == 0 or first_way[idx] < first_way[idx-1] and second_way[idx] < second_way[idx-1] for idx in range(min(len(first_way), len(second_way)))]
+  assert all(first_less_than_second)
+  assert all(monotonic_dec)
   import matplotlib.pyplot as plt
   line_first, = plt.plot(x_probs, first_way)
   line_second, = plt.plot(x_probs, second_way)
