@@ -1,8 +1,4 @@
-### ML-Coursework
+### ML-Notes
 
-This repository just contains my code for the various 
-machine learning and deep learning courses I have taken, 
-including the Udacity course, CS 231N and 224d from Stanford,
-the Deep Learning book, and Michael Nielsen's book http://neuralnetworksanddeeplearning.
-
+Notes from several machine learning and deep learning topics. To view a curated collection of notes, please visit [](http://rohanvarma.me/ml-notes/)
 
